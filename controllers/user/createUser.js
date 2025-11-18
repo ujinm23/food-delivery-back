@@ -1,4 +1,4 @@
-const UserModel = require("../../schemas/userSchema");
+const UserModel = require("../../schemas/userSchemas");
 const SALT_ROUND = 10;
 const createUser = async (req, res) => {
   const { firstName, email, password, address, phoneNumber } = req.body;

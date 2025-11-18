@@ -1,15 +1,17 @@
-const UserModel = require("../../schemas/userSchema");
+const UserModel = require("../../schemas/userSchemas");
 
 const getUser = async (req, res) => {
   const { id } = req.body;
+
   try {
     const data = await UserModel.findById(id);
 
-    console.log(data, "data");
-    res.json(data);
+    if (!data) {
+      throw new Error("user not found");
+    }
+    res.status(200).json(`user: ${data}`);
   } catch (err) {
-    console.error(err);
-    res.json(err);
+    res.status(500).json(`something went wrong: ${err}`);
   }
 };
 
