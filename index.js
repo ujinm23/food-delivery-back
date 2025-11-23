@@ -19,6 +19,7 @@ connectToDB();
 app.use("/user", userRouter);
 app.use("/foodcategory", categoryRouter);
 app.use("/authentication", authenticationRouter);
+
 app.get("/", (req, res) => {
   res.send("hello world, running");
 });
