@@ -8,13 +8,11 @@ const createUser = async (req, res) => {
 
   const hashedPassword = await bcrypt.hash(password, SALT_ROUND);
 
-  console.log(hashedPassword, "hashedPassword");
-  console.log(password, "password");
   try {
     const data = await UserModel.create({
       firstName: firstName,
       email: email,
-      password: password,
+      password: hashedPassword,
       address: address,
       phoneNumber: phoneNumber,
     });

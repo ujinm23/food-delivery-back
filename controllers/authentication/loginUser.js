@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
+  console.log("working ...");
 
   // const { user } = req;
   try {
