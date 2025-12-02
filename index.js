@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const connectToDB = require("./db");
 const userModel = require("./schemas/userSchemas");
-const categoryModel = require("./schemas/foodcategoryschemas");
+const categoryModel = require("./schemas/foodcategoryschemas").default;
 
 const userRouter = require("./routes/userRoutes");
 const categoryRouter = require("./routes/categoryRoutes");
