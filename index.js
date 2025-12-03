@@ -3,9 +3,11 @@ const cors = require("cors");
 const connectToDB = require("./db");
 const userModel = require("./schemas/userSchemas");
 const categoryModel = require("./schemas/foodcategoryschemas").default;
+const foodModel = require("./schemas/foodSchemas").default;
 
 const userRouter = require("./routes/userRoutes");
 const categoryRouter = require("./routes/categoryRoutes");
+const foodRouter = require("./routes/foodRoutes");
 const authenticationRouter = require("./routes/authentication");
 
 const app = express();
@@ -18,6 +20,7 @@ connectToDB();
 
 app.use("/user", userRouter);
 app.use("/foodcategory", categoryRouter);
+app.use("/food", foodRouter);
 app.use("/authentication", authenticationRouter);
 
 app.get("/", (req, res) => {
