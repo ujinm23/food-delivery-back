@@ -1,8 +1,9 @@
 const { default: CategoryModel } = require("../../schemas/foodcategoryschemas");
 
 const getCategory = async (req, res) => {
+  const { id } = req.body;
   try {
-    const data = await CategoryModel.find();
+    const data = await CategoryModel.findById(id);
 
     if (!(data.length > 0)) {
       throw new Error("category empty");
