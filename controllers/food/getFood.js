@@ -1,9 +1,8 @@
 const { default: FoodModel } = require("../../schemas/foodSchemas");
 
 const getFood = async (req, res) => {
-  const { id } = req.body;
   try {
-    const data = await FoodModel.findById(id);
+    const data = await FoodModel.find();
 
     if (!(data.length > 0)) {
       throw new Error("Food empty");
