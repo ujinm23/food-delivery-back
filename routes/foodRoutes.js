@@ -5,15 +5,16 @@ const getFood = require("../controllers/food/getFood");
 const deleteFood = require("../controllers/food/deleteFood");
 const updateFood = require("../controllers/food/updateFood");
 const getFoodsByCategoryId = require("../controllers/food/getFoodsByCategoryId");
+const verifyJwt = require("../middleware/verifyJWT");
 
 const FoodRouter = express.Router();
 
-FoodRouter.post("/", createFood);
+FoodRouter.post("/", verifyJwt, createFood);
 
 FoodRouter.get("/", getFood);
 FoodRouter.get("/category/:id", getFoodsByCategoryId);
 
-FoodRouter.delete("/", deleteFood);
-FoodRouter.put("/", updateFood);
+FoodRouter.delete("/", verifyJwt, deleteFood);
+FoodRouter.put("/", verifyJwt, updateFood);
 
 module.exports = FoodRouter;

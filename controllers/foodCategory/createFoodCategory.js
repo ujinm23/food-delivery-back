@@ -1,6 +1,6 @@
 const CategoryModel = require("../../schemas/foodcategoryschemas").default;
 
-const createCategory = async (req, res) => {
+const createFoodCategory = async (req, res) => {
   const { name } = req.body;
 
   try {
@@ -21,4 +21,4 @@ const createCategory = async (req, res) => {
   }
 };
 
-module.exports = createCategory;
+module.exports = createFoodCategory;

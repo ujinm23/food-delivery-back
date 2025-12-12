@@ -20,7 +20,6 @@ const foodSchema = new Schema({
   category: {
     type: Schema.Types.ObjectId,
     ref: "Category",
-    required: false,
   },
 });
 const foodModel = model("food", foodSchema);

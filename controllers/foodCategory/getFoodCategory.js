@@ -1,6 +1,6 @@
 const { default: CategoryModel } = require("../../schemas/foodcategoryschemas");
 
-const getCategory = async (req, res) => {
+const getFoodCategory = async (req, res) => {
   try {
     const data = await CategoryModel.find();
 
@@ -13,4 +13,4 @@ const getCategory = async (req, res) => {
   }
 };
 
-module.exports = getCategory;
+module.exports = getFoodCategory;

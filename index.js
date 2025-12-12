@@ -6,7 +6,7 @@ const categoryModel = require("./schemas/foodcategoryschemas").default;
 const foodModel = require("./schemas/foodSchemas").default;
 
 const userRouter = require("./routes/userRoutes");
-const categoryRouter = require("./routes/categoryRoutes");
+const foodCategoryRouter = require("./routes/foodCategoryRoutes");
 const foodRouter = require("./routes/foodRoutes");
 const authenticationRouter = require("./routes/authentication");
 
@@ -19,7 +19,7 @@ app.use(express.json());
 connectToDB();
 
 app.use("/user", userRouter);
-app.use("/foodcategory", categoryRouter);
+app.use("/foodcategory", foodCategoryRouter);
 app.use("/food", foodRouter);
 app.use("/authentication", authenticationRouter);
 
