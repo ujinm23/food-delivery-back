@@ -5,6 +5,9 @@ const userModel = require("./schemas/userSchemas");
 const categoryModel = require("./schemas/foodcategoryschemas").default;
 const foodModel = require("./schemas/foodSchemas").default;
 
+const dotenv = require("dotenv");
+dotenv.config();
+
 const userRouter = require("./routes/userRoutes");
 const foodCategoryRouter = require("./routes/foodCategoryRoutes");
 const foodRouter = require("./routes/foodRoutes");
