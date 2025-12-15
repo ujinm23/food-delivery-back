@@ -1,7 +1,5 @@
 const jwt = require("jsonwebtoken");
 
-const JWT_SECRET = "12354";
-
 const verifyJwt = (req, res, next) => {
   console.log(req.headers);
   const authorization = req.headers["authorization"];
@@ -11,7 +9,7 @@ const verifyJwt = (req, res, next) => {
   }
   const token = authorization.split(" ")[1];
 
-  jwt.verify(token, JWT_SECRET, (err, decoded) => {
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
     if (err)
       return res.status(401).json({ message: "Invalid or expired token" });
     console.log("decoded", decoded);

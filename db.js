@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
 
 const connectToDB = async () => {
+  console.log("DATABASE connecting...", process.env.MONGO_URI);
   try {
-    await mongoose.connect(
-      "mongodb+srv://ujinm23:Ujin2008.@food-delivery.jvhjtlf.mongodb.net/"
-    );
+    await mongoose.connect(process.env.MONGO_URI);
 
     console.log("DATABASE connection success");
   } catch (err) {

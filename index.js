@@ -12,6 +12,7 @@ const userRouter = require("./routes/userRoutes");
 const foodCategoryRouter = require("./routes/foodCategoryRoutes");
 const foodRouter = require("./routes/foodRoutes");
 const authenticationRouter = require("./routes/authentication");
+const OrderRouter = require("./routes/orderRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 999;
