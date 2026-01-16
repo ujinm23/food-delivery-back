@@ -26,6 +26,7 @@ app.use("/user", userRouter);
 app.use("/foodcategory", foodCategoryRouter);
 app.use("/food", foodRouter);
 app.use("/authentication", authenticationRouter);
+app.use ("/order", OrderRouter);
 
 app.get("/", (req, res) => {
   res.send("hello world, running");
