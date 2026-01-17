@@ -1,71 +1,27 @@
 const mongoose = require("mongoose");
 
-const orderItemSchema = new mongoose.Schema(
-  {
-    productId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Product",
-      required: true,
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    imageURL: {
-      type: String,
-      required: true,
-    },
-    ingredients: {
-      type: String,
-    },
-    price: {
-      type: Number,
-      required: true,
-    },
-    quantity: {
-      type: Number,
-      required: true,
-      min: 1,
-    },
-  },
-  { _id: false }
-);
-
 const orderSchema = new mongoose.Schema(
   {
-    items: {
-      type: [orderItemSchema],
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
       required: true,
     },
-
-    deliveryAddress: {
-      type: String,
-      required: true,
-    },
-
-    itemsPrice: {
-      type: Number,
-      required: true,
-    },
-
-    shippingPrice: {
-      type: Number,
-      default: 0.99,
-    },
-
-    totalPrice: {
-      type: Number,
-      required: true,
-    },
-
-    status: {
-      type: String,
-      enum: ["pending", "paid", "preparing", "delivered", "cancelled"],
-      default: "pending",
-    },
+    items: [
+      {
+        productId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Food", // or your product schema
+          required: true,
+        },
+        quantity: { type: Number, required: true },
+      },
+    ],
+    location: { type: String, required: true },
+    totalPrice: { type: Number, required: true },
   },
   {
-    timestamps: true,
+    timestamps: true, // automatically adds createdAt & updatedAt
   }
 );
 

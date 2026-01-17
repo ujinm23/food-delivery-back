@@ -1,30 +1,28 @@
-const mongoose = require("mongoose");
+const Order = require("../../schemas/orderSchemas");
 
-const orderSchema = new mongoose.Schema(
-  {
-    items: [
-      {
-        _id: String,
-        name: String,
-        price: Number,
-        quantity: Number,
-        imageURL: String,
-      },
-    ],
-    totalPrice: {
-      type: Number,
-      required: true,
-    },
-    address: {
-      type: String,
-      required: true,
-    },
-    status: {
-      type: String,
-      default: "pending",
-    },
-  },
-  { timestamps: true }
-);
+const createOrder = async (req, res) => {
+  try {
+    const { items, location, totalPrice } = req.body;
+    const userId = req.user._id; // from verifyJWT
 
-module.exports = mongoose.model("Order", orderSchema);
+    if (!items || items.length === 0) {
+      return res.status(400).json({ message: "No items in order" });
+    }
+
+    const order = await Order.create({
+      user: userId,
+      items,
+      location,
+      totalPrice,
+      status: "Pending",
+      createdAt: new Date(),
+    });
+
+    res.status(201).json(order); // <-- send order back
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Failed to create order" });
+  }
+};
+
+module.exports = createOrder;
