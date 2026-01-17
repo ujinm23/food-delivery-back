@@ -9,16 +9,13 @@ const orderSchema = new mongoose.Schema(
     },
     items: [
       {
-        productId: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Food", // or your product schema
-          required: true,
-        },
-        quantity: { type: Number, required: true },
+        productId: { type: mongoose.Schema.Types.ObjectId, ref: "Food" },
+        quantity: Number,
       },
     ],
-    location: { type: String, required: true },
-    totalPrice: { type: Number, required: true },
+    location: String,
+    totalPrice: Number,
+    status: { type: String, default: "Pending" },
   },
   {
     timestamps: true, // automatically adds createdAt & updatedAt

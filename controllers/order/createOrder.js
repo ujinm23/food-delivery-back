@@ -19,6 +19,7 @@ const createOrder = async (req, res) => {
     });
 
     res.status(201).json(order); // <-- send order back
+    console.log("Order created:", order);
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Failed to create order" });
